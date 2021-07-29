@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Utilizo um parametro opcional
 Route::get('/produtos/{idProduct?}', function ($idProduct = ''){
     return "Produto(s) {$idProduct}";
 });
