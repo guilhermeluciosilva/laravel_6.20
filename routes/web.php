@@ -10,7 +10,29 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/produtos/{idProduct?}', function ($idProduct = ''){
+    return "Produto(s) {$idProduct}";
+});
 
+//O parametro precisa ser condizente
+Route::get('/categoria/{flag}/posts', function ($flag) {
+    return "Posts da categoria: {$flag}";
+});
+
+//O parametro não precisa ser condizente
+Route::get('/categorias/{flag}', function ($prm) {
+    return "Produtos da categoria: {$prm}";
+});
+
+//Eu defino os parametros de como eu vou acessar essa rota
+Route::match(['get', 'post', 'put'],'/match', function () {
+    return 'match';
+});
+
+//Aceita todos os paramtros GET POST
+Route::any('/any', function () {
+    return 'Any';
+});
 
 Route::post('/register', function () {
     return 'empresa';
