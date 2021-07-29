@@ -11,6 +11,14 @@
 |
 */
 
+Route::get('redirect1', function (){
+    return redirect('/redirect2');
+});
+
+Route::get('redirect2', function (){
+    return 'Redirect 02';
+});
+
 //Utilizo um parametro opcional
 Route::get('/produtos/{idProduct?}', function ($idProduct = ''){
     return "Produto(s) {$idProduct}";
