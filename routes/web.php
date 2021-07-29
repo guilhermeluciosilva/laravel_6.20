@@ -11,6 +11,19 @@
 |
 */
 
+
+Route::post('/register', function () {
+    return 'empresa';
+});
+
+Route::get('/empresa', function () {
+    return 'empresa';
+});
+
+Route::get('/contact', function () {
+    return view('site.contact');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
