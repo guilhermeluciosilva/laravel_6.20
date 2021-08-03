@@ -10,11 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// redireciono pelo nome da rota
 Route::get('redirect3', function (){
     return redirect()->route('url.name');
 });
 
-Route::get('/name-url', function () {
+// route('url.name');
+Route::get('/nome-url', function () {
     return 'He hey hey';
 })->name('url.name');
 
