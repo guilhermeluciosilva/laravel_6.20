@@ -10,6 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/login', function () {
+    return 'Login';
+})->name('login');
+
+//grupo de rostos que é necessário autenticacao
+Route::middleware(['auth'])->group(function () {
+
+    //grupo de rotas com um pré fixo
+    Route::prefix('admin')->group(function () {
+
+        Route::get('/dashboard', 'Admin\TesteController@teste');
+        
+        Route::get('/financeiro', 'Admin\TesteController@teste');
+        
+        Route::get('/produtos', 'Admin\TesteController@teste');
+
+        //rota barra
+        Route::get('/', 'Admin\TesteController@teste');
+        
+
+    });
+});
 
 // redireciono pelo nome da rota
 Route::get('redirect3', function (){
