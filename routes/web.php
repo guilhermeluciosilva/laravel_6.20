@@ -10,7 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('redirect3', function (){
+    return redirect()->route('url.name');
+});
 
+Route::get('/name-url', function () {
+    return 'He hey hey';
+})->name('url.name');
+
+Route::view('/view', 'welcome', ['id' => 'teste']);
 
 //Redirecionando url
 Route::redirect('/redirect1', '/redirect2');
