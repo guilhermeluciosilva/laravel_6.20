@@ -10,27 +10,73 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('products', 'ProductController');
+
+/*
+Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy');
+
+//Editar um registro
+Route::put('products/{id}', 'ProductController@update')->name('products.update');
+
+Route::get('products/{id}/edit', 'ProductController@edit')->name('products.edit');
+
+Route::get('products/create', 'ProductController@create')->name('products.create');
+
+//Passando parametros para o controler
+Route::get('products/{id}', 'ProductController@show')->name('products.show');
+//Aponta para o controller products
+Route::get('products', 'ProductController@index')->name('products.index');
+Route::post('products', 'ProductController@stor')->name('products.store');
+*/
 Route::get('/login', function () {
     return 'Login';
 })->name('login');
 
+/*
 //grupo de rostos que é necessário autenticacao
 Route::middleware(['auth'])->group(function () {
 
     //grupo de rotas com um pré fixo
     Route::prefix('admin')->group(function () {
-
-        Route::get('/dashboard', 'Admin\TesteController@teste');
         
-        Route::get('/financeiro', 'Admin\TesteController@teste');
-        
-        Route::get('/produtos', 'Admin\TesteController@teste');
+        //Coloca o nome de onde está o controler antes das funções
+        Route::namespace('Admin')->group(function (){
 
-        //rota barra
-        Route::get('/', 'Admin\TesteController@teste');
-        
+            //Groupo de rotas do name da rota
+            Route::name('admin.')->group(function () {
+                
+                Route::get('/dashboard', 'TesteController@teste')->name('dashboard');
+            
+                Route::get('/financeiro', 'TesteController@teste')->name('financeiro');
+                
+                Route::get('/produtos', 'TesteController@teste')->name('produtos');
 
+                //rota barra
+                Route::get('/', 'TesteController@teste')->name('home');
+
+
+            }); 
+        });
     });
+});
+*/
+
+Route::group([
+    'middleware' => [],
+    'prefix' => 'admin',
+    'namespace' => 'Admin'
+], function () {
+
+    Route::get('/dashboard', 'TesteController@teste')->name('dashboard');
+
+    Route::get('/financeiro', 'TesteController@teste')->name('financeiro');
+    
+    Route::get('/produtos', 'TesteController@teste')->name('produtos');
+
+    //rota barra
+    Route::get('/', 'TesteController@teste')->name('home');
+
+
 });
 
 // redireciono pelo nome da rota
