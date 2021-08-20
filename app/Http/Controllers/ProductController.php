@@ -6,6 +6,22 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+        //$this->middleware('auth');
+        /*$this->middleware('auth')->only([
+            'create', 'store'
+        ]);*/
+        $this->middleware('auth')->except([
+            'index', 'show'
+        ]);
+        
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +29,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return 'Listagem dos produtos';
+        $teste = 123;
+        $teste1 = 11223;
+        return view('admin.pages.products.index', compact('teste', 'teste1'));
     }
 
     /**

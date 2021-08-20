@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('products', 'ProductController');
+Route::resource('products', 'ProductController');//->middleware('auth');
 
 /*
 Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy');
